@@ -8,7 +8,7 @@ namespace Nintek.Mathematics
 {
     public class TokenGrouper
     {
-        public IEnumerable<TokenGroup> GroupTokens(IEnumerable<IToken> tokens)
+        public IEnumerable<TokenGroup> GroupTokens(IReadOnlyCollection<IToken> tokens)
         {
             foreach (var groupTokens in SplitBySpaceTokens(tokens))
             {
@@ -17,7 +17,7 @@ namespace Nintek.Mathematics
             }
         }
 
-        IEnumerable<List<IToken>> SplitBySpaceTokens(IEnumerable<IToken> tokens)
+        IEnumerable<List<IToken>> SplitBySpaceTokens(IReadOnlyCollection<IToken> tokens)
         {
             var groupTokens = new List<IToken>();
 
@@ -31,9 +31,7 @@ namespace Nintek.Mathematics
                 else
                 {
                     groupTokens.Add(token);
-
-                    // when using iterators,
-                    // this condition with great possibility kills performance
+                    
                     if (token == tokens.Last())
                     {
                         yield return groupTokens;

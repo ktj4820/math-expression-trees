@@ -8,9 +8,10 @@ namespace Nintek.Mathematics
 {
     public interface IToken
     {
+        object Value { get; }
     }
 
-    public interface IToken<TValue> : IToken
+    public interface IToken<TValue>
     {
         TValue Value { get; }
     }

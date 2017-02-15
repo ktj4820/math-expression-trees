@@ -12,7 +12,7 @@ namespace Nintek.Mathematics
         {
             var tokenizer = new Tokenizer();
 
-            var tokens = tokenizer.Tokenize("x - 2 + 586 = 20").ToList();
+            var tokens = tokenizer.Tokenize("2xy - 2 + 586 = 20").ToList();
         }
     }
 }

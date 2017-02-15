@@ -8,17 +8,58 @@ namespace Nintek.Mathematics
 {
     public class Node
     {
-        public IToken Token { get; }
-        public Node Parent { get; }
-        public Node Left { get; }
-        public Node Right { get; }
+        public IToken Token { get; private set; }
+        public Node Left { get; private set; }
+        public Node Right { get; private set; }
 
-        public Node(IToken token, Node parent, Node left, Node right)
+        public Node(IReadOnlyCollection<IToken> tokens, Func<IToken, bool> rootPredicate)
         {
-            Token = token;
-            Parent = parent;
-            Left = left;
-            Right = right;
+            Split(tokens, rootPredicate);
+        }
+
+        void Split(IReadOnlyCollection<IToken> tokens, Func<IToken, bool> predicate)
+        {
+            var left = new List<IToken>();
+            var right = new List<IToken>();
+            IToken delimiter = null;
+            var predicateSolved = false;
+
+            foreach (var token in tokens)
+            {
+                if (predicate(token) && !predicateSolved)
+                {
+                    delimiter = token;
+                    predicateSolved = true;
+                    continue;
+                }
+
+                if (delimiter == null)
+                {
+                    left.Add(token);
+                }
+                else
+                {
+                    right.Add(token);
+                }
+            }
+
+            if (delimiter == null)
+            {
+                Token = tokens.First();
+                return;
+            }
+            else
+            {
+                Token = delimiter;
+            }
+
+            Left = new Node(left, token => token is OperationToken);
+            Right = new Node(right, token => token is OperationToken);
+        }
+
+        public override string ToString()
+        {
+            return $"node: {Token.ToString()}";
         }
     }
 }

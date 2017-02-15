@@ -10,11 +10,13 @@ namespace Nintek.Mathematics
     {
         public SyntaxTree Parse(IReadOnlyCollection<IToken> tokens)
         {
-            var split = Split(tokens, token => token is OperationToken && ((Operation) token.Value) == Operation.Equals);
+            //var split = Split(tokens, token => token is OperationToken && ((Operation) token.Value) == Operation.Equals);
 
-            
+            var rootNode = new Node(
+                tokens,
+                token => token is OperationToken && ((Operation) token.Value) == Operation.Equals);
 
-            throw new NotImplementedException();
+            return new SyntaxTree(rootNode);
         }
 
         TokenSplit Split(IReadOnlyCollection<IToken> tokens, Func<IToken, bool> predicate)

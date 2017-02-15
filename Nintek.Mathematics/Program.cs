@@ -15,6 +15,13 @@ namespace Nintek.Mathematics
 
             var parser = new Parser();
             var tree = parser.Parse(tokens);
+
+            var writer = new ExpressionWriter();
+            var expression = writer.TreeToString(tree);
+
+            Console.WriteLine(expression);
+
+            Console.ReadKey();
         }
     }
 }

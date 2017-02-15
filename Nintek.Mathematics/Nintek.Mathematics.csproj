@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharTokenizer.cs" />
+    <Compile Include="Tokens\IComplexToken.cs" />
+    <Compile Include="Writing\ExpressionWriter.cs" />
     <Compile Include="Syntax\Node.cs" />
     <Compile Include="Syntax\SyntaxTree.cs" />
     <Compile Include="TokenSplit.cs" />
@@ -51,7 +53,6 @@
     <Compile Include="Digit.cs" />
     <Compile Include="Tokens\DigitToken.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="IComplexToken.cs" />
     <Compile Include="Tokens\IToken.cs" />
     <Compile Include="Letter.cs" />
     <Compile Include="Tokens\LetterToken.cs" />
@@ -71,6 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

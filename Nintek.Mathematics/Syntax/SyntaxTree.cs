@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Nintek.Mathematics
 {
-    public class StatementTreeBuilder
+    public class SyntaxTree
     {
-        public StatementTree Build(IEnumerable<IToken> tokens)
+        public Node Root { get; }
+
+        public SyntaxTree(Node root)
         {
-            throw new NotImplementedException();
+            Root = root;
         }
     }
 }

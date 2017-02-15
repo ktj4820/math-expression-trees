@@ -44,29 +44,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharTokenizer.cs" />
-    <Compile Include="CommaToken.cs" />
+    <Compile Include="Syntax\Node.cs" />
+    <Compile Include="Syntax\SyntaxTree.cs" />
+    <Compile Include="TokenSplit.cs" />
+    <Compile Include="Tokens\CommaToken.cs" />
     <Compile Include="Digit.cs" />
-    <Compile Include="DigitToken.cs" />
+    <Compile Include="Tokens\DigitToken.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="IComplexToken.cs" />
-    <Compile Include="IToken.cs" />
+    <Compile Include="Tokens\IToken.cs" />
     <Compile Include="Letter.cs" />
-    <Compile Include="LetterToken.cs" />
-    <Compile Include="Node.cs" />
-    <Compile Include="NumberToken.cs" />
+    <Compile Include="Tokens\LetterToken.cs" />
+    <Compile Include="Tokens\NumberToken.cs" />
     <Compile Include="Operation.cs" />
-    <Compile Include="OperationToken.cs" />
+    <Compile Include="Tokens\OperationToken.cs" />
+    <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpaceToken.cs" />
-    <Compile Include="StatementTree.cs" />
-    <Compile Include="StatementTreeBuilder.cs" />
-    <Compile Include="Token.cs" />
+    <Compile Include="Tokens\SpaceToken.cs" />
+    <Compile Include="Tokens\Token.cs" />
     <Compile Include="TokenAssembler.cs" />
     <Compile Include="TokenGroup.cs" />
     <Compile Include="TokenGrouper.cs" />
     <Compile Include="Tokenizer.cs" />
-    <Compile Include="VariableToken.cs" />
+    <Compile Include="Tokens\VariableToken.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

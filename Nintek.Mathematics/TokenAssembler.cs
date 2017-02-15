@@ -24,14 +24,9 @@ namespace Nintek.Mathematics
 
         IToken Assemble(TokenGroup group)
         {
-            if (group.TokensType == typeof(DigitToken))
+            if (group.TokenTypes.Length == 1 && group.TokenTypes[0] == typeof(DigitToken))
             {
                 return AssembleNumber(group.Tokens.Cast<DigitToken>());
-            }
-
-            if (group.TokensType == typeof(LetterToken))
-            {
-                return AssembleVariable(group.Tokens.Cast<LetterToken>());
             }
 
             if (group.Tokens.Count == 1)

@@ -8,12 +8,15 @@ namespace Nintek.Mathematics
 {
     public class TokenGroup
     {
-        public List<IToken> Tokens { get; set; }
-        public Type TokensType { get; set; }
+        public List<IToken> Tokens { get; }
+        public Type[] TokenTypes { get; }
 
-        public TokenGroup()
+        public TokenGroup(List<IToken> tokens)
         {
-            Tokens = new List<IToken>();
+            if (tokens == null) throw new ArgumentNullException(nameof(tokens));
+
+            Tokens = tokens;
+            TokenTypes = tokens.Select(t => t.GetType()).Distinct().ToArray();
         }
     }
 }

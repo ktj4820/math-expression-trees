@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Nintek.Mathematics
 {
-    public class NumberToken : IComplexToken<double>
+    public class NumberToken : Token<double>, IComplexToken<double>
     {
         public IReadOnlyCollection<IToken> Components { get; }
-        public double Value { get; }
 
         public NumberToken(double value, IReadOnlyCollection<IToken> components)
+            : base(value)
         {
-            Value = value;
             Components = components;
         }
     }

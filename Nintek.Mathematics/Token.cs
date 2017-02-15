@@ -14,5 +14,13 @@ namespace Nintek.Mathematics
         {
             Value = value;
         }
+
+        public override string ToString()
+        {
+            var typeName = GetType().Name;
+            var tokenName = typeName.Substring(0, typeName.Length - 5);
+
+            return $"{tokenName}: {Value}";
+        }
     }
 }

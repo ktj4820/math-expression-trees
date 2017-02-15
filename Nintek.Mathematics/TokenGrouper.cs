@@ -8,39 +8,38 @@ namespace Nintek.Mathematics
 {
     public class TokenGrouper
     {
-        public List<TokenGroup> GroupTokens(IEnumerable<IToken> tokens)
+        public IEnumerable<TokenGroup> GroupTokens(IEnumerable<IToken> tokens)
         {
-            var groups = new List<TokenGroup>();
+            foreach (var groupTokens in SplitBySpaceTokens(tokens))
+            {
+                var tokenGroup = new TokenGroup(groupTokens);
+                yield return tokenGroup;
+            }
+        }
 
-            TokenGroup currentGroup = null;
+        IEnumerable<List<IToken>> SplitBySpaceTokens(IEnumerable<IToken> tokens)
+        {
+            var groupTokens = new List<IToken>();
 
             foreach (var token in tokens)
             {
-                //if (token is SpaceToken)
-                //{
-                //    continue;
-                //}
-
-                var tokenType = token.GetType();
-
-                if (currentGroup != null && tokenType != currentGroup.TokensType)
+                if (token is SpaceToken)
                 {
-                    groups.Add(currentGroup);
-                    currentGroup = null;
+                    yield return groupTokens;
+                    groupTokens = new List<IToken>();
                 }
-
-                if (currentGroup == null)
+                else
                 {
-                    currentGroup = new TokenGroup();
-                    currentGroup.TokensType = tokenType;
-                }
+                    groupTokens.Add(token);
 
-                currentGroup.Tokens.Add(token);
+                    // when using iterators,
+                    // this condition with great possibility kills performance
+                    if (token == tokens.Last())
+                    {
+                        yield return groupTokens;
+                    }
+                }
             }
-
-            groups.Add(currentGroup);
-
-            return groups;
         }
     }
 }

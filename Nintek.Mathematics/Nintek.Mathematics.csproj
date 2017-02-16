@@ -51,6 +51,8 @@
     <Compile Include="Parsers\ExpressionParser.cs" />
     <Compile Include="Parsers\IParser.cs" />
     <Compile Include="Tokens\IComplexToken.cs" />
+    <Compile Include="Parenthesis.cs" />
+    <Compile Include="Tokens\ParenthesisToken.cs" />
     <Compile Include="Writing\SyntaxTreeWriter.cs" />
     <Compile Include="Syntax\Node.cs" />
     <Compile Include="Syntax\SyntaxTree.cs" />

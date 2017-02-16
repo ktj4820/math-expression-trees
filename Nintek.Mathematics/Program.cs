@@ -12,15 +12,21 @@ namespace Nintek.Mathematics
         {
             var tokenizer = new Tokenizer();
             //var tokens = tokenizer.Tokenize("2x + x + 1 = 2 - x").ToList();
-            var tokens = tokenizer.Tokenize("1 + 3 * 4 + 1 = 0").ToList();
+            //var tokens = tokenizer.Tokenize("1 + 3 * 4 + 1 = 0").ToList();
+            var tokens = tokenizer.Tokenize("2 + 3 * 4").ToList();
+            //var tokens = tokenizer.Tokenize("2 + 3").ToList();
 
-            var parser = new Parser();
+            //var parser = new EquationParser();
+            var parser = new ExpressionParser();
             var tree = parser.Parse(tokens);
 
-            var writer = new ExpressionWriter();
+            var writer = new SyntaxTreeWriter();
             var expression = writer.TreeToString(tree);
 
-            Console.WriteLine(expression);
+            var expressionCalculator = new ConstantExpressionCalculator();
+            var result = expressionCalculator.Calculate(tree);
+
+            Console.WriteLine($"{expression} = {result}");
 
             Console.ReadKey();
         }

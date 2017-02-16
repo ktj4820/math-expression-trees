@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nintek.Mathematics
 {
-    public class ExpressionWriter
+    public class SyntaxTreeWriter
     {
         public string TreeToString(SyntaxTree tree)
         {

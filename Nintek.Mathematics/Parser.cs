@@ -24,7 +24,7 @@ namespace Nintek.Mathematics
             var left = new List<IToken>();
             var right = new List<IToken>();
             IToken delimiter = null;
-
+            
             foreach (var token in tokens)
             {
                 if (predicate(token))

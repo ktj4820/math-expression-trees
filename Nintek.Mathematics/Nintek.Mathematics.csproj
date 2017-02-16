@@ -44,9 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharTokenizer.cs" />
+    <Compile Include="ConstantExpressionCalculator.cs" />
+    <Compile Include="ExpressionType.cs" />
     <Compile Include="Extensions\AsEnumerableExtension.cs" />
+    <Compile Include="Parsers\EquationParser.cs" />
+    <Compile Include="Parsers\ExpressionParser.cs" />
+    <Compile Include="Parsers\IParser.cs" />
     <Compile Include="Tokens\IComplexToken.cs" />
-    <Compile Include="Writing\ExpressionWriter.cs" />
+    <Compile Include="Writing\SyntaxTreeWriter.cs" />
     <Compile Include="Syntax\Node.cs" />
     <Compile Include="Syntax\SyntaxTree.cs" />
     <Compile Include="TokenSplit.cs" />

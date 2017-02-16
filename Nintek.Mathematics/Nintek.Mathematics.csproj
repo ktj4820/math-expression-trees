@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharTokenizer.cs" />
+    <Compile Include="Extensions\AsEnumerableExtension.cs" />
     <Compile Include="Tokens\IComplexToken.cs" />
     <Compile Include="Writing\ExpressionWriter.cs" />
     <Compile Include="Syntax\Node.cs" />
@@ -52,7 +53,6 @@
     <Compile Include="Tokens\CommaToken.cs" />
     <Compile Include="Digit.cs" />
     <Compile Include="Tokens\DigitToken.cs" />
-    <Compile Include="Extensions.cs" />
     <Compile Include="Tokens\IToken.cs" />
     <Compile Include="Letter.cs" />
     <Compile Include="Tokens\LetterToken.cs" />

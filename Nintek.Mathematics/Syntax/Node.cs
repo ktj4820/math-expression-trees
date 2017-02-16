@@ -58,8 +58,6 @@ namespace Nintek.Mathematics
         }
 
         public override string ToString()
-        {
-            return $"node: {Token.ToString()}";
-        }
+            => $"<{Token.ToString()}>";
     }
 }

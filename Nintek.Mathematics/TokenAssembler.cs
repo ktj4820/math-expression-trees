@@ -26,11 +26,19 @@ namespace Nintek.Mathematics
 
         IEnumerable<IToken> Assemble(TokenGroup group)
         {
+            // single digit
             if (group.TokenTypes.Length == 1 && group.TokenTypes[0] == typeof(DigitToken))
             {
                 return AssembleNumber(group.Tokens.Cast<DigitToken>()).AsEnumerable();
             }
 
+            // parenthesis e.g. '(42543', '(1', '123))', '('
+            if (group.TokenTypes.Contains(typeof(ParenthesisToken)))
+            {
+                return AssembleGroupWithParenthesis(group.Tokens);
+            }
+
+            // sth with letter, e.g. 'x', 'xy', '2xy'
             if (group.TokenTypes.Contains(typeof(LetterToken)))
             {
                 if (group.Tokens.Count == 1)
@@ -38,7 +46,7 @@ namespace Nintek.Mathematics
                     return new VariableToken(group.Tokens.First().Value.ToString()).AsEnumerable();
                 }
 
-                return AssembleComplexGroup(group.Tokens);
+                return AssembleGroupWithLetters(group.Tokens);
             }
 
             if (group.Tokens.Count == 1)
@@ -56,9 +64,40 @@ namespace Nintek.Mathematics
             var result = new NumberToken(number);
             return result;
         }
+
+        IEnumerable<IToken> AssembleGroupWithParenthesis(IEnumerable<IToken> tokens)
+        {
+            var numberAccumulator = new List<DigitToken>();
+
+            foreach (var token in tokens)
+            {
+                if (token is ParenthesisToken)
+                {
+                    if (numberAccumulator.Any())
+                    {
+                        yield return AssembleNumber(numberAccumulator);
+                        numberAccumulator.Clear();
+                    }
+
+                    yield return token;
+                }
+                else
+                {
+                    var digitToken = (DigitToken) token;
+                    numberAccumulator.Add(digitToken);
+                }
+            }
+
+            if (!numberAccumulator.Any())
+            {
+                yield break;
+            }
+
+            yield return AssembleNumber(numberAccumulator);
+        }
         
         // e.g. valid complex groups: 'xy' or '2xy'
-        IEnumerable<IToken> AssembleComplexGroup(IEnumerable<IToken> tokens)
+        IEnumerable<IToken> AssembleGroupWithLetters(IEnumerable<IToken> tokens)
         {
             var components = tokens.ToArray();
             var digits = components.OfType<DigitToken>();

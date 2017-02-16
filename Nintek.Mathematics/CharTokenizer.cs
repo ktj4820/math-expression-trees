@@ -36,6 +36,10 @@ namespace Nintek.Mathematics
                     return new CommaToken();
                 case ' ':
                     return new SpaceToken();
+                case '(':
+                    return new ParenthesisToken(Parenthesis.Left);
+                case ')':
+                    return new ParenthesisToken(Parenthesis.Right);
             }
 
             throw new InvalidOperationException($"Unrecognized token: {c}.");

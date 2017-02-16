@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nintek.Mathematics
 {
-    public enum ExpressionType
+    public enum StatementType
     {
         ConstantExpression,
         Expression,

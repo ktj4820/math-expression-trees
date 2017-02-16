@@ -19,14 +19,24 @@ namespace Nintek.Mathematics
 
         void Split(IReadOnlyCollection<IToken> tokens, Func<IToken, bool> predicate)
         {
+            if (tokens.Count == 1)
+            {
+                Token = tokens.First();
+                return;
+            }
+
             var left = new List<IToken>();
             var right = new List<IToken>();
             IToken delimiter = null;
             var predicateSolved = false;
 
+            var firstOperation = tokens
+                .OfType<OperationToken>()
+                .Aggregate((Operation) int.MaxValue, (accumulator, token) => accumulator > token.Value ? token.Value : accumulator);
+
             foreach (var token in tokens)
             {
-                if (predicate(token) && !predicateSolved)
+                if (predicate(token) && !predicateSolved && IsOperation(token, firstOperation))
                 {
                     delimiter = token;
                     predicateSolved = true;
@@ -52,12 +62,24 @@ namespace Nintek.Mathematics
             {
                 Token = delimiter;
             }
-
+            
             Left = new Node(left, token => token is OperationToken);
             Right = new Node(right, token => token is OperationToken);
         }
 
         public override string ToString()
             => $"<{Token.ToString()}>";
+
+        bool IsOperation(IToken token, Operation comparedOperation)
+        {
+            var operationToken = token as OperationToken;
+
+            if (operationToken == null)
+            {
+                return false;
+            }
+
+            return operationToken.Value == comparedOperation;
+        }
     }
 }

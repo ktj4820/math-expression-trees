@@ -12,8 +12,9 @@ namespace Nintek.Mathematics
         {
             var tokenizer = new Tokenizer();
             //var tokens = tokenizer.Tokenize("2x + x + 1 = 2 - x").ToList();
-            //var tokens = tokenizer.Tokenize("1 + 3 * 4 + 1 = 0").ToList();
-            var tokens = tokenizer.Tokenize("2 + 3 * 4").ToList();
+            var tokens = tokenizer.Tokenize("1 + 3 * 4 - 4 / 2").ToList();
+            //var tokens = tokenizer.Tokenize("2 + 3 * 4").ToList();
+            //var tokens = tokenizer.Tokenize("3 * 4 + 2").ToList();
             //var tokens = tokenizer.Tokenize("2 + 3").ToList();
 
             //var parser = new EquationParser();

@@ -19,6 +19,7 @@ namespace Nintek.Mathematics
 
             //var tokens = tokenizer.Tokenize("1 + 3 * (4 + 1)");
             var tokens = tokenizer.Tokenize("4 * (2 + 1) + (7 + 5) * 3");
+            //var tokens = tokenizer.Tokenize("4 * (2 * (2 + 1))");
 
             //var parser = new EquationParser();
             var parser = new ExpressionParser();

@@ -34,10 +34,10 @@ namespace Nintek.Mathematics
 
                         if (scopeDepth == 0)
                         {
+                            parentheses = AssembleParentheses(parentheses).ToList();
+
                             var parenthesesToken = new ParenthesesToken(new TokenCollection(parentheses));
                             result.Add(parenthesesToken);
-
-                            AssembleParentheses(parenthesesToken.Value);
 
                             parentheses.Clear();
                             isParenthesisOpened = false;

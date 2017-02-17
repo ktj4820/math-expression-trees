@@ -8,13 +8,13 @@ namespace Nintek.Mathematics
 {
     public class ExpressionParser : IParser
     {
-        public SyntaxTree Parse(IReadOnlyCollection<IToken> tokens)
+        public SyntaxTree Parse(ITokenCollection tokens)
         {
             var rootNode = new Node(
                 tokens,
                 token => token is OperationToken);
 
-            return new SyntaxTree(rootNode);
+            return new SyntaxTree(rootNode, tokens);
         }
     }
 }

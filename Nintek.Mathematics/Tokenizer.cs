@@ -17,11 +17,11 @@ namespace Nintek.Mathematics
             _tokenAssembler = new TokenAssembler();
         }
 
-        public IEnumerable<IToken> Tokenize(string expression)
+        public ITokenCollection Tokenize(string expression)
         {
             var tokens = expression.Select(c => _charTokenizer.Tokenize(c));
             tokens = _tokenAssembler.AssembleComplexTokens(tokens);
-            return tokens;
+            return new TokenCollection(tokens);
         }
     }
 }

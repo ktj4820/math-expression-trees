@@ -11,6 +11,6 @@ namespace Nintek.Mathematics
     /// </summary>
     public interface IParser
     {
-        SyntaxTree Parse(IReadOnlyCollection<IToken> tokens);
+        SyntaxTree Parse(ITokenCollection tokens);
     }
 }

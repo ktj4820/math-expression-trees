@@ -45,14 +45,24 @@
   <ItemGroup>
     <Compile Include="CharTokenizer.cs" />
     <Compile Include="ConstantExpressionCalculator.cs" />
+    <Compile Include="ITokenCollection.cs" />
+    <Compile Include="ITokenExtensions.cs" />
+    <Compile Include="ParenthesesTokenAssembler.cs" />
     <Compile Include="StatementType.cs" />
     <Compile Include="Extensions\AsEnumerableExtension.cs" />
     <Compile Include="Parsers\EquationParser.cs" />
     <Compile Include="Parsers\ExpressionParser.cs" />
     <Compile Include="Parsers\IParser.cs" />
+    <Compile Include="Syntax\Builder\IBuilderNode.cs" />
+    <Compile Include="Syntax\Builder\ExpressionNode.cs" />
+    <Compile Include="Syntax\Builder\LiteralNode.cs" />
+    <Compile Include="Syntax\SyntaxTreeBuilder.cs" />
+    <Compile Include="TokenCollection.cs" />
     <Compile Include="Tokens\IComplexToken.cs" />
     <Compile Include="Parenthesis.cs" />
+    <Compile Include="Tokens\ParenthesesToken.cs" />
     <Compile Include="Tokens\ParenthesisToken.cs" />
+    <Compile Include="UtilExtensions.cs" />
     <Compile Include="Writing\SyntaxTreeWriter.cs" />
     <Compile Include="Syntax\Node.cs" />
     <Compile Include="Syntax\SyntaxTree.cs" />
@@ -66,7 +76,6 @@
     <Compile Include="Tokens\NumberToken.cs" />
     <Compile Include="Operation.cs" />
     <Compile Include="Tokens\OperationToken.cs" />
-    <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tokens\SpaceToken.cs" />

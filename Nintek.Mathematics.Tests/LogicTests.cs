@@ -20,7 +20,7 @@ namespace Nintek.Mathematics.Tests
             var parser = new ExpressionParser();
             var calculator = new ConstantExpressionCalculator();
             
-            var tokens = tokenizer.Tokenize(expression).ToArray();
+            var tokens = tokenizer.Tokenize(expression);
             var tree = parser.Parse(tokens);
             var result = calculator.Calculate(tree);
 

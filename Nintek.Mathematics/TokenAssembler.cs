@@ -11,17 +11,19 @@ namespace Nintek.Mathematics
     public class TokenAssembler
     {
         readonly TokenGrouper _tokenGrouper;
+        readonly ParenthesesTokenAssembler _parenthesesAssembler;
 
         public TokenAssembler()
         {
             _tokenGrouper = new TokenGrouper();
+            _parenthesesAssembler = new ParenthesesTokenAssembler();
         }
 
         public IEnumerable<IToken> AssembleComplexTokens(IEnumerable<IToken> tokens)
         {
             var groups = _tokenGrouper.GroupTokens(tokens.ToArray());
 
-            return groups.SelectMany(g => Assemble(g)).ToList();
+            return _parenthesesAssembler.AssembleParentheses(groups.SelectMany(g => Assemble(g)).ToList());
         }
 
         IEnumerable<IToken> Assemble(TokenGroup group)
@@ -88,12 +90,10 @@ namespace Nintek.Mathematics
                 }
             }
 
-            if (!numberAccumulator.Any())
+            if (numberAccumulator.Any())
             {
-                yield break;
+                yield return AssembleNumber(numberAccumulator);
             }
-
-            yield return AssembleNumber(numberAccumulator);
         }
         
         // e.g. valid complex groups: 'xy' or '2xy'

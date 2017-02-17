@@ -9,10 +9,12 @@ namespace Nintek.Mathematics
     public class SyntaxTree
     {
         public Node Root { get; }
+        public ITokenCollection Source { get; }
 
-        public SyntaxTree(Node root)
+        public SyntaxTree(Node root, ITokenCollection source)
         {
             Root = root;
+            Source = source;
         }
 
         public IEnumerable<T> InOrderSelect<T>(Func<Node, T> selector)

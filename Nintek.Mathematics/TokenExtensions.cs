@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nintek.Mathematics
 {
-    public static class ITokenExtensions
+    public static class TokenExtensions
     {
         public static bool IsParenthesis(this IToken token)
         {

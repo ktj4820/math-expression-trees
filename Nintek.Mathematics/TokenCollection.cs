@@ -28,5 +28,37 @@ namespace Nintek.Mathematics
 
         IEnumerator IEnumerable.GetEnumerator()
             => _source.GetEnumerator();
+
+        public ITokenCollectionSplit Split(Func<IToken, bool> splitPredicate)
+        {
+            IToken delimiter = null;
+            var left = new List<IToken>();
+            var right = new List<IToken>();
+            var predicateSolved = false;
+
+            foreach (var token in _source)
+            {
+                if (!predicateSolved && splitPredicate(token))
+                {
+                    delimiter = token;
+                    predicateSolved = true;
+                    continue;
+                }
+
+                if (delimiter == null)
+                {
+                    left.Add(token);
+                }
+                else
+                {
+                    right.Add(token);
+                }
+            }
+
+            return new TokenCollectionSplit(
+                delimiter, 
+                left.ToTokenCollection(), 
+                right.ToTokenCollection());
+        }
     }
 }

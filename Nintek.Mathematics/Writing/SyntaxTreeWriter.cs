@@ -28,10 +28,11 @@ namespace Nintek.Mathematics
                 return ParseOperationToken(operationToken);
             }
 
-            var parenthesisToken = token as ParenthesisToken;
-            if (parenthesisToken != null)
+            var parenthesesToken = token as ParenthesesToken;
+            if (parenthesesToken != null)
             {
-                return ParseParenthesisToken(parenthesisToken);
+                var parsedContent = string.Join(" ", ParseParenthesesToken(parenthesesToken));
+                return $"({parsedContent})";
             }
 
             throw new InvalidOperationException($"Unknown token type: {token.GetType().FullName}.");
@@ -68,5 +69,8 @@ namespace Nintek.Mathematics
                     throw new InvalidOperationException($"Unknown {nameof(Parenthesis)} type: {token.Value}.");
             }
         }
+
+        IEnumerable<string> ParseParenthesesToken(ParenthesesToken token)
+            => token.Value.Select(t => ParseToken(t));
     }
 }

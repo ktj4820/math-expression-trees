@@ -12,8 +12,5 @@ namespace Nintek.Mathematics
             : base(parenthesesContent)
         {
         }
-
-        public Node Compile()
-            => new Node(Value, token => token is OperationToken);
     }
 }

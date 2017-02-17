@@ -8,9 +8,26 @@ namespace Nintek.Mathematics
 {
     public class OperationToken : Token<Operation>
     {
+        public int Weight { get; }
+
         public OperationToken(Operation operation)
             : base(operation)
         {
+            switch (operation)
+            {
+                case Operation.Add:
+                case Operation.Remove:
+                    Weight = 2;
+                    break;
+
+                case Operation.Multiply:
+                case Operation.Divide:
+                    Weight = 1;
+                    break;
+
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }

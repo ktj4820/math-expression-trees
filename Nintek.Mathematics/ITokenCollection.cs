@@ -10,5 +10,6 @@ namespace Nintek.Mathematics
     {
         IToken this[int index] { get; }
         int FindIndex(Predicate<IToken> predicate);
+        ITokenCollectionSplit Split(Func<IToken, bool> splitPredicate);
     }
 }

@@ -10,11 +10,7 @@ namespace Nintek.Mathematics
     {
         public SyntaxTree Parse(ITokenCollection tokens)
         {
-            var rootNode = new Node(
-                tokens,
-                token => token is OperationToken);
-
-            return new SyntaxTree(rootNode, tokens);
+            throw new NotImplementedException();
         }
     }
 }

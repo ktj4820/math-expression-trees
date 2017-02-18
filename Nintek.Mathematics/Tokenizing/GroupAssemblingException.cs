@@ -8,9 +8,9 @@ namespace Nintek.Mathematics
 {
     public class GroupAssemblingException : InvalidOperationException
     {
-        public TokenGroup AssemblingFailedFor { get; }
+        public ITokenGroup AssemblingFailedFor { get; }
 
-        public GroupAssemblingException(string message, TokenGroup failureGroup)
+        public GroupAssemblingException(string message, ITokenGroup failureGroup)
             : base(message)
         {
             AssemblingFailedFor = failureGroup;

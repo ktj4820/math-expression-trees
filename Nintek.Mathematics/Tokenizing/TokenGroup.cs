@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Nintek.Mathematics
 {
-    public class TokenGroup
+    public class TokenGroup : ITokenGroup
     {
-        public List<IToken> Tokens { get; }
+        public ITokenCollection Tokens { get; }
         public Type[] TokenTypes { get; }
 
-        public TokenGroup(List<IToken> tokens)
+        public TokenGroup(ITokenCollection tokens)
         {
             if (tokens == null) throw new ArgumentNullException(nameof(tokens));
 

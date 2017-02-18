@@ -24,14 +24,29 @@ namespace Nintek.Mathematics.Tests
         [InlineData("(2 + 1) / 6 * 2", 1)]
         public void ConstantExpressionsCalculating(string expression, double expected)
         {
-            var tokenizer = new Tokenizer();
+            // arrange
+            var atomicTokenizer = new AtomicTokenizer();
+
+            var numberAssembler = new NumberGroupAssembler();
+            var assembleTokenizer = new AssembleTokenizer(
+                new TokenGrouper(),
+                numberAssembler,
+                new ParenthesisGroupAssembler(numberAssembler),
+                new OperationGroupAssembler());
+
+            var parenthesesTokenizer = new ParenthesesTokenizer();
+
+            var tokenizer = new Tokenizer(atomicTokenizer, assembleTokenizer, parenthesesTokenizer);
+
             var parser = new ExpressionParser();
             var calculator = new ConstantExpressionCalculator();
             
+            // act
             var tokens = tokenizer.Tokenize(expression);
             var tree = parser.Parse(tokens);
             var result = calculator.Calculate(tree);
 
+            // assert
             Assert.Equal(expected, result);
         }
     }

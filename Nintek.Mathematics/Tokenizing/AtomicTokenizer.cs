@@ -6,21 +6,24 @@ using System.Threading.Tasks;
 
 namespace Nintek.Mathematics
 {
-    public class CharTokenizer
+    public class AtomicTokenizer : IAtomicTokenizer
     {
-        public IToken Tokenize(char c)
+        public ITokenCollection Tokenize(string expression)
+            => expression.Select(c => TokenizeChar(c)).ToTokenCollection();
+        
+        public IToken TokenizeChar(char character)
         {
-            if (char.IsLetter(c))
+            if (char.IsLetter(character))
             {
-                return new LetterToken(c);
+                return new LetterToken(character);
             }
 
-            if (char.IsDigit(c))
+            if (char.IsDigit(character))
             {
-                return new DigitToken(c);
+                return new DigitToken(character);
             }
 
-            switch (c)
+            switch (character)
             {
                 case '+':
                     return new OperationToken(Operation.Add);
@@ -42,7 +45,7 @@ namespace Nintek.Mathematics
                     return new ParenthesisToken(Parenthesis.Right);
             }
 
-            throw new InvalidOperationException($"Unrecognized token: {c}.");
+            throw new InvalidOperationException($"Unrecognized token: {character}.");
         }
     }
 }

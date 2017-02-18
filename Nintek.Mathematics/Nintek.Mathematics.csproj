@@ -43,16 +43,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tokenizing\CharTokenizer.cs" />
+    <Compile Include="Tokenizing\AtomicTokenizer.cs" />
     <Compile Include="Calculating\ConstantExpressionCalculator.cs" />
     <Compile Include="Tokenizing\GroupAssemblingException.cs" />
+    <Compile Include="Tokenizing\IAtomicTokenizer.cs" />
+    <Compile Include="Tokenizing\ICompositeTokenAssembler.cs" />
+    <Compile Include="Tokenizing\ICompositeTokenizer.cs" />
+    <Compile Include="Tokenizing\ITokenGroupAssembler.cs" />
+    <Compile Include="Tokenizing\ITokenGroup.cs" />
+    <Compile Include="Tokenizing\ITokenGrouper.cs" />
+    <Compile Include="Tokenizing\ITokenizer.cs" />
+    <Compile Include="Tokenizing\NumberGroupAssembler.cs" />
+    <Compile Include="Tokenizing\OperationGroupAssembler.cs" />
+    <Compile Include="Tokenizing\ParenthesisGroupAssembler.cs" />
     <Compile Include="Tokens\ITokenCollection.cs" />
     <Compile Include="Tokens\ITokenCollectionSplit.cs" />
     <Compile Include="Syntax\IWalkable.cs" />
     <Compile Include="Parsing\EquationParser.cs" />
     <Compile Include="Tokens\TokenCollectionExtensions.cs" />
     <Compile Include="Tokens\TokenExtensions.cs" />
-    <Compile Include="Tokenizing\ParenthesesTokenAssembler.cs" />
+    <Compile Include="Tokenizing\ParenthesesTokenizer.cs" />
     <Compile Include="Extensions\AsEnumerableExtension.cs" />
     <Compile Include="Parsing\IParser.cs" />
     <Compile Include="Parsing\BuilderNode.cs" />
@@ -76,7 +86,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tokens\SpaceToken.cs" />
     <Compile Include="Tokens\Token.cs" />
-    <Compile Include="Tokenizing\TokenAssembler.cs" />
+    <Compile Include="Tokenizing\AssembleTokenizer.cs" />
     <Compile Include="Tokenizing\TokenGroup.cs" />
     <Compile Include="Tokenizing\TokenGrouper.cs" />
     <Compile Include="Tokenizing\Tokenizer.cs" />

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Nintek.Mathematics
 {
-    public class ParenthesesTokenAssembler
+    public class ParenthesesTokenizer : ISemanticTokenizer
     {
-        public ITokenCollection AssembleParentheses(ITokenCollection tokens)
+        public ITokenCollection Tokenize(ITokenCollection tokens)
         {
             if (!tokens.OfType<ParenthesisToken>().Any())
             {
@@ -34,7 +34,7 @@ namespace Nintek.Mathematics
 
                         if (scopeDepth == 0)
                         {
-                            parentheses = AssembleParentheses(parentheses.ToTokenCollection()).ToList();
+                            parentheses = Tokenize(parentheses.ToTokenCollection()).ToList();
 
                             var parenthesesToken = new ParenthesesToken(new TokenCollection(parentheses));
                             result.Add(parenthesesToken);

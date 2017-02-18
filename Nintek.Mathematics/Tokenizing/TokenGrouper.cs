@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nintek.Mathematics
 {
-    public class TokenGrouper
+    public class TokenGrouper : ITokenGrouper
     {
         public IEnumerable<TokenGroup> GroupTokens(ITokenCollection tokens)
         {
@@ -17,7 +17,7 @@ namespace Nintek.Mathematics
             }
         }
 
-        IEnumerable<List<IToken>> SplitBySpaceTokens(ITokenCollection tokens)
+        IEnumerable<ITokenCollection> SplitBySpaceTokens(ITokenCollection tokens)
         {
             var groupTokens = new List<IToken>();
 
@@ -25,7 +25,7 @@ namespace Nintek.Mathematics
             {
                 if (token is SpaceToken)
                 {
-                    yield return groupTokens;
+                    yield return groupTokens.ToTokenCollection();
                     groupTokens = new List<IToken>();
                 }
                 else
@@ -34,7 +34,7 @@ namespace Nintek.Mathematics
                     
                     if (token == tokens.Last())
                     {
-                        yield return groupTokens;
+                        yield return groupTokens.ToTokenCollection();
                     }
                 }
             }

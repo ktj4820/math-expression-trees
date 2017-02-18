@@ -6,22 +6,28 @@ using System.Threading.Tasks;
 
 namespace Nintek.Mathematics
 {
-    public class Tokenizer
+    public class Tokenizer : ITokenizer
     {
-        readonly CharTokenizer _charTokenizer;
-        readonly TokenAssembler _tokenAssembler;
+        readonly IAtomicTokenizer _atomicTokenizer;
+        readonly ISemanticTokenizer _assembleTokenizer;
+        readonly ISemanticTokenizer _parenthesesTokenizer;
 
-        public Tokenizer()
+        public Tokenizer(
+            IAtomicTokenizer atomicTokenizer,
+            ISemanticTokenizer assembleTokenizer,
+            ISemanticTokenizer parenthesesTokenizer)
         {
-            _charTokenizer = new CharTokenizer();
-            _tokenAssembler = new TokenAssembler();
+            _atomicTokenizer = atomicTokenizer;
+            _assembleTokenizer = assembleTokenizer;
+            _parenthesesTokenizer = parenthesesTokenizer;
         }
 
         public ITokenCollection Tokenize(string expression)
         {
-            var tokens = expression.Select(c => _charTokenizer.Tokenize(c)).ToTokenCollection();
-            tokens = _tokenAssembler.AssembleComplexTokens(tokens);
-            return new TokenCollection(tokens);
+            var tokens = _atomicTokenizer.Tokenize(expression);
+            tokens = _assembleTokenizer.Tokenize(tokens);
+            tokens = _parenthesesTokenizer.Tokenize(tokens);
+            return tokens;
         }
     }
 }

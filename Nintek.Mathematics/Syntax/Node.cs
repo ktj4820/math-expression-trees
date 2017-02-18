@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Nintek.Mathematics.Tokens;
 
-namespace Nintek.Mathematics
+namespace Nintek.Mathematics.Syntax
 {
     public class Node : IWalkable<Node>
     {

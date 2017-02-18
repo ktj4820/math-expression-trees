@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nintek.Mathematics
+namespace Nintek.Mathematics.Tokens
 {
     public class Token<TValue> : IToken<TValue>, IToken
     {

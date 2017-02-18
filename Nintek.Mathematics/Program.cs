@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Nintek.Mathematics.Tokenizing;
+using Nintek.Mathematics.Parsing;
+using Nintek.Mathematics.Writing;
+using Nintek.Mathematics.Calculating;
 
 namespace Nintek.Mathematics
 {

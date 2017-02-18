@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Nintek.Mathematics.Tokenizing;
+using Nintek.Mathematics.Parsing;
+using Nintek.Mathematics.Calculating;
 
 namespace Nintek.Mathematics
 {

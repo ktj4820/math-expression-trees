@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Nintek.Mathematics.Tokens;
 
-namespace Nintek.Mathematics
+namespace Nintek.Mathematics.Tokenizing
 {
     public interface ITokenGrouper
     {

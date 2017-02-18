@@ -1,4 +1,6 @@
-﻿namespace Nintek.Mathematics
+﻿using Nintek.Mathematics.Syntax;
+
+namespace Nintek.Mathematics.Calculating
 {
     public interface IConstantExpressionCalculator
     {

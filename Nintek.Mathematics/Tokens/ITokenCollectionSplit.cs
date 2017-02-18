@@ -1,4 +1,4 @@
-﻿namespace Nintek.Mathematics
+﻿namespace Nintek.Mathematics.Tokens
 {
     public interface ITokenCollectionSplit
     {

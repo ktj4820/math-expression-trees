@@ -1,4 +1,6 @@
-﻿namespace Nintek.Mathematics
+﻿using Nintek.Mathematics.Tokens;
+
+namespace Nintek.Mathematics.Tokenizing
 {
     public interface ITokenizer
     {

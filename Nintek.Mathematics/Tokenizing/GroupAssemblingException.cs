@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nintek.Mathematics
+namespace Nintek.Mathematics.Tokenizing
 {
     public class GroupAssemblingException : InvalidOperationException
     {

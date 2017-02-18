@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using Nintek.Mathematics.Extensions;
+using Nintek.Mathematics.Tokens;
 
-namespace Nintek.Mathematics
+namespace Nintek.Mathematics.Tokenizing
 {
     public class AssembleTokenizer : ISemanticTokenizer
     {

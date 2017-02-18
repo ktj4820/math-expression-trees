@@ -50,8 +50,8 @@ namespace Nintek.Mathematics
                     throw new InvalidOperationException();
             }
 
-            var leftValue = CalculateNode(node.Left);
-            var rightValue = CalculateNode(node.Right);
+            var leftValue = Calculate(node.Left);
+            var rightValue = Calculate(node.Right);
 
             return operation(leftValue, rightValue);
         }

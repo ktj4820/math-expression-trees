@@ -52,14 +52,9 @@
     <Compile Include="ParenthesesTokenAssembler.cs" />
     <Compile Include="StatementType.cs" />
     <Compile Include="Extensions\AsEnumerableExtension.cs" />
-    <Compile Include="Parsers\EquationParser.cs" />
-    <Compile Include="Parsers\ExpressionParser.cs" />
     <Compile Include="Parsers\IParser.cs" />
-    <Compile Include="Syntax\BuilderNode.cs" />
-    <Compile Include="Syntax\Builder\IBuilderNode.cs" />
-    <Compile Include="Syntax\Builder\ExpressionNode.cs" />
-    <Compile Include="Syntax\Builder\LiteralNode.cs" />
-    <Compile Include="Syntax\SyntaxTreeBuilder.cs" />
+    <Compile Include="Parsers\BuilderNode.cs" />
+    <Compile Include="Parsers\ExpressionParser.cs" />
     <Compile Include="TokenCollection.cs" />
     <Compile Include="TokenCollectionSplit.cs" />
     <Compile Include="Tokens\IComplexToken.cs" />

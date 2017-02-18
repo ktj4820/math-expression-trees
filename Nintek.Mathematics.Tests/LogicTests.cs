@@ -21,11 +21,11 @@ namespace Nintek.Mathematics.Tests
         public void ConstantExpressionsCalculating(string expression, double expected)
         {
             var tokenizer = new Tokenizer();
-            var parser = new SyntaxTreeBuilder();
+            var parser = new ExpressionParser();
             var calculator = new ConstantExpressionCalculator();
             
             var tokens = tokenizer.Tokenize(expression);
-            var tree = parser.Build(tokens);
+            var tree = parser.Parse(tokens);
             var result = calculator.Calculate(tree);
 
             Assert.Equal(expected, result);

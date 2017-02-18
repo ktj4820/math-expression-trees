@@ -26,8 +26,8 @@ namespace Nintek.Mathematics
 
             //var parser = new EquationParser();
             //var parser = new ExpressionParser();
-            var builder = new SyntaxTreeBuilder();
-            var tree = builder.Build(tokens);
+            var parser = new ExpressionParser();
+            var tree = parser.Parse(tokens);
 
             var writer = new SyntaxTreeWriter();
             var expression = writer.TreeToString(tree);

@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Nintek.Mathematics.Tests
 {
-    public class LogicTests
+    public class AcceptanceTests
     {
         [Theory]
         [InlineData("2 + 3", 5)]

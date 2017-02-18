@@ -9,11 +9,9 @@ namespace Nintek.Mathematics
     public class ConstantExpressionCalculator
     {
         public double Calculate(SyntaxTree tree)
-        {
-            return CalculateNode(tree.Root);
-        }
+            => Calculate(tree.Root);
 
-        double CalculateNode(Node node)
+        public double Calculate(Node node)
         {
             var numberToken = node.Token as NumberToken;
             if (numberToken != null)

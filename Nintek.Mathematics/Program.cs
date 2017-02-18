@@ -13,18 +13,7 @@ namespace Nintek.Mathematics
         {
             var stopwatch = Stopwatch.StartNew();
 
-            var atomicTokenizer = new AtomicTokenizer();
-
-            var numberAssembler = new NumberGroupAssembler();
-            var assembleTokenizer = new AssembleTokenizer(
-                new TokenGrouper(),
-                numberAssembler,
-                new ParenthesisGroupAssembler(numberAssembler),
-                new OperationGroupAssembler());
-
-            var parenthesesTokenizer = new ParenthesesTokenizer();
-
-            var tokenizer = new Tokenizer(atomicTokenizer, assembleTokenizer, parenthesesTokenizer);
+            var tokenizer = new Tokenizer();
             var tokens = tokenizer.Tokenize("6 / 2 * (2 + 1)");
 
             var parser = new ExpressionParser();

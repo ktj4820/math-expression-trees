@@ -12,6 +12,13 @@ namespace Nintek.Mathematics
         readonly ISemanticTokenizer _assembleTokenizer;
         readonly ISemanticTokenizer _parenthesesTokenizer;
 
+        public Tokenizer()
+        {
+            _atomicTokenizer = new AtomicTokenizer();
+            _assembleTokenizer = new AssembleTokenizer();
+            _parenthesesTokenizer = new ParenthesesTokenizer(); 
+        }
+
         public Tokenizer(
             IAtomicTokenizer atomicTokenizer,
             ISemanticTokenizer assembleTokenizer,

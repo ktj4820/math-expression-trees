@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nintek.Mathematics
 {
-    public class ConstantExpressionCalculator
+    public class ConstantExpressionCalculator : IConstantExpressionCalculator
     {
         public double Calculate(SyntaxTree tree)
             => Calculate(tree.Root);

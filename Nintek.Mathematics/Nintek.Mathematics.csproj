@@ -43,11 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculating\IConstantExpressionCalculator.cs" />
+    <Compile Include="ConstantExpressionSolver.cs" />
     <Compile Include="Tokenizing\AtomicTokenizer.cs" />
     <Compile Include="Calculating\ConstantExpressionCalculator.cs" />
     <Compile Include="Tokenizing\GroupAssemblingException.cs" />
     <Compile Include="Tokenizing\IAtomicTokenizer.cs" />
-    <Compile Include="Tokenizing\ICompositeTokenAssembler.cs" />
     <Compile Include="Tokenizing\ICompositeTokenizer.cs" />
     <Compile Include="Tokenizing\ITokenGroupAssembler.cs" />
     <Compile Include="Tokenizing\ITokenGroup.cs" />

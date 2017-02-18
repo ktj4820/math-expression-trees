@@ -15,6 +15,14 @@ namespace Nintek.Mathematics
         readonly ITokenGroupAssembler _parenthesisAssembler;
         readonly ITokenGroupAssembler _operationAssembler;
 
+        public AssembleTokenizer()
+        {
+            _tokenGrouper = new TokenGrouper();
+            _numberAssembler = new NumberGroupAssembler();
+            _parenthesisAssembler = new ParenthesisGroupAssembler(_numberAssembler);
+            _operationAssembler = new OperationGroupAssembler();
+        }
+
         public AssembleTokenizer(
             ITokenGrouper tokenGrouper,
             ITokenGroupAssembler numberAssembler,

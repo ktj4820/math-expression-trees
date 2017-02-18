@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Nintek.Mathematics
 {
-    public class SyntaxTree
+    public class SyntaxTree : IWalkable<Node>
     {
         public Node Root { get; }
         public ITokenCollection Source { get; }
@@ -17,66 +18,37 @@ namespace Nintek.Mathematics
             Source = source;
         }
 
-        public IEnumerable<T> InOrderSelect<T>(Func<Node, T> selector)
-        {
-            return InOrderSelect(Root, selector);
-        }
+        public IEnumerable<Node> InOrderWalk()
+            => Root.InOrderWalk();
 
-        IEnumerable<T> InOrderSelect<T>(Node node, Func<Node, T> selector)
-        {
-            if (node.Left != null)
-            {
-                foreach (var selected in InOrderSelect(node.Left, selector))
-                {
-                    yield return selected;
-                }
-            }
+        public IEnumerable<Node> PreOrderWalk()
+            => Root.PreOrderWalk();
 
-            yield return selector(node);
+        public IEnumerable<Node> PostOrderWalk()
+            => Root.PostOrderWalk();
 
-            if (node.Right != null)
-            {
-                foreach (var selected in InOrderSelect(node.Right, selector))
-                {
-                    yield return selected;
-                }
-            }
-        }
+        public void InOrder(Action<Node> action)
+            => Root.InOrder(action);
 
-        public void InOrderTreeWalk(Action<Node> action)
-        {
-            InOrderTreeWalk(Root, action);
-        }
+        public void PreOrder(Action<Node> action)
+            => Root.PreOrder(action);
 
-        void InOrderTreeWalk(Node node, Action<Node> action)
-        {
-            if (node.Left != null) InOrderTreeWalk(node.Left, action);
-            action(node);
-            if (node.Right != null) InOrderTreeWalk(node.Right, action);
-        }
+        public void PostOrder(Action<Node> action)
+            => Root.PostOrder(action);
 
-        public void PreOrderTreeWalk(Action<Node> action)
-        {
-            PreOrderTreeWalk(Root, action);
-        }
+        public IEnumerable<TResult> InOrderSelect<TResult>(Func<Node, TResult> selector)
+            => Root.InOrderSelect(selector);
 
-        void PreOrderTreeWalk(Node node, Action<Node> action)
-        {
-            action(node);
-            if (node.Left != null) PreOrderTreeWalk(node.Left, action);
-            if (node.Right != null) PreOrderTreeWalk(node.Right, action);
-        }
+        public IEnumerable<TResult> PreOrderSelect<TResult>(Func<Node, TResult> selector)
+            => Root.PreOrderSelect(selector);
 
-        public void PostOrderTreeWalk(Action<Node> action)
-        {
-            PostOrderTreeWalk(Root, action);
-        }
+        public IEnumerable<TResult> PostOrderSelect<TResult>(Func<Node, TResult> selector)
+            => Root.PostOrderSelect(selector);
 
-        void PostOrderTreeWalk(Node node, Action<Node> action)
-        {
-            if (node.Left != null) PostOrderTreeWalk(node.Left, action);
-            if (node.Right != null) PostOrderTreeWalk(node.Right, action);
-            action(node);
-        }
+        public IEnumerator<Node> GetEnumerator()
+            => Root.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator()
+            => Root.GetEnumerator();
     }
 }

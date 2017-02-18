@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nintek.Mathematics
+namespace Nintek.Mathematics.Parsers
 {
-    public class VariableToken : Token<string>
+    class EquationParser : IParser
     {
-        public VariableToken(string value)
-            : base(value)
+        public SyntaxTree Parse(ITokenCollection tokens)
         {
             throw new NotImplementedException();
         }

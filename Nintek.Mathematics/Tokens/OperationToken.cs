@@ -17,10 +17,13 @@ namespace Nintek.Mathematics
             {
                 case Operation.Add:
                 case Operation.Remove:
-                    Weight = 2;
+                    Weight = 3;
                     break;
 
                 case Operation.Multiply:
+                    Weight = 2;
+                    break;
+
                 case Operation.Divide:
                     Weight = 1;
                     break;

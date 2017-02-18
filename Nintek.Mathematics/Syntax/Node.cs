@@ -18,5 +18,10 @@ namespace Nintek.Mathematics
             Left = left;
             Right = right;
         }
+
+        public override string ToString()
+        {
+            return Token.ToString();
+        }
     }
 }

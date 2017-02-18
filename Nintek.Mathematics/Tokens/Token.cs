@@ -21,6 +21,12 @@ namespace Nintek.Mathematics
         {
             var typeName = GetType().Name;
             var tokenName = typeName.Substring(0, typeName.Length - 5);
+
+            if (this is ParenthesesToken)
+            {
+                return tokenName;
+            }
+
             return $"{tokenName}: {Value}";
         }
     }

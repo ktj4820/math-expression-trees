@@ -18,6 +18,10 @@ namespace Nintek.Mathematics.Tests
         [InlineData("4 * (8 * 2 - 10)", 24)]
         [InlineData("81 / 9 - (32 - 27)", 4)]
         [InlineData("44 / ((20 - 9) * 2)", 2)]
+        [InlineData("6 / 2 * (2 + 1)", 9)]
+        [InlineData("(2 + 1) * 6 / 2", 9)]
+        [InlineData("6 * 2 / (2 + 1)", 4)]
+        [InlineData("(2 + 1) / 6 * 2", 1)]
         public void ConstantExpressionsCalculating(string expression, double expected)
         {
             var tokenizer = new Tokenizer();

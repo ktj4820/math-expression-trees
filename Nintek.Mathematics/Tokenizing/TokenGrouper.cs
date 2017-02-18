@@ -8,7 +8,7 @@ namespace Nintek.Mathematics
 {
     public class TokenGrouper
     {
-        public IEnumerable<TokenGroup> GroupTokens(IReadOnlyCollection<IToken> tokens)
+        public IEnumerable<TokenGroup> GroupTokens(ITokenCollection tokens)
         {
             foreach (var groupTokens in SplitBySpaceTokens(tokens))
             {
@@ -17,7 +17,7 @@ namespace Nintek.Mathematics
             }
         }
 
-        IEnumerable<List<IToken>> SplitBySpaceTokens(IReadOnlyCollection<IToken> tokens)
+        IEnumerable<List<IToken>> SplitBySpaceTokens(ITokenCollection tokens)
         {
             var groupTokens = new List<IToken>();
 

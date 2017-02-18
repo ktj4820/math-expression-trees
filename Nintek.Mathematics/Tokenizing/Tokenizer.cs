@@ -19,7 +19,7 @@ namespace Nintek.Mathematics
 
         public ITokenCollection Tokenize(string expression)
         {
-            var tokens = expression.Select(c => _charTokenizer.Tokenize(c));
+            var tokens = expression.Select(c => _charTokenizer.Tokenize(c)).ToTokenCollection();
             tokens = _tokenAssembler.AssembleComplexTokens(tokens);
             return new TokenCollection(tokens);
         }

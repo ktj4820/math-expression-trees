@@ -19,11 +19,11 @@ namespace Nintek.Mathematics
             _parenthesesAssembler = new ParenthesesTokenAssembler();
         }
 
-        public IEnumerable<IToken> AssembleComplexTokens(IEnumerable<IToken> tokens)
+        public ITokenCollection AssembleComplexTokens(ITokenCollection tokens)
         {
-            var groups = _tokenGrouper.GroupTokens(tokens.ToArray());
+            var groups = _tokenGrouper.GroupTokens(tokens);
 
-            return _parenthesesAssembler.AssembleParentheses(groups.SelectMany(g => Assemble(g)).ToList());
+            return _parenthesesAssembler.AssembleParentheses(groups.SelectMany(g => Assemble(g)).ToTokenCollection());
         }
 
         IEnumerable<IToken> Assemble(TokenGroup group)

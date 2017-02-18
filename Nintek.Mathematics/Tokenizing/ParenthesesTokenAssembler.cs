@@ -8,7 +8,7 @@ namespace Nintek.Mathematics
 {
     public class ParenthesesTokenAssembler
     {
-        public IEnumerable<IToken> AssembleParentheses(IEnumerable<IToken> tokens)
+        public ITokenCollection AssembleParentheses(ITokenCollection tokens)
         {
             if (!tokens.OfType<ParenthesisToken>().Any())
             {
@@ -34,7 +34,7 @@ namespace Nintek.Mathematics
 
                         if (scopeDepth == 0)
                         {
-                            parentheses = AssembleParentheses(parentheses).ToList();
+                            parentheses = AssembleParentheses(parentheses.ToTokenCollection()).ToList();
 
                             var parenthesesToken = new ParenthesesToken(new TokenCollection(parentheses));
                             result.Add(parenthesesToken);
@@ -60,7 +60,7 @@ namespace Nintek.Mathematics
                 }
             }
 
-            return result;
+            return result.ToTokenCollection();
         }
     }
 }

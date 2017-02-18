@@ -56,7 +56,8 @@ namespace Nintek.Mathematics
                 return group.Tokens.First().AsEnumerable();
             }
 
-            throw new InvalidOperationException("Unknown rule for assembling tokens.");
+            var exceptionMessage = $"Unknown rule for assembling encountered {nameof(TokenGroup)}.";
+            throw new GroupAssemblingException(exceptionMessage, group);
         }
 
         NumberToken AssembleNumber(IEnumerable<DigitToken> digitTokens)

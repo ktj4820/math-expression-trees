@@ -29,7 +29,7 @@ namespace Nintek.Mathematics
                     break;
 
                 default:
-                    throw new NotImplementedException();
+                    throw new InvalidOperationException($"Not supported operation type: {operation}.");
             }
         }
     }

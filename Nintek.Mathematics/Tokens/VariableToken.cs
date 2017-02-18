@@ -11,7 +11,7 @@ namespace Nintek.Mathematics
         public VariableToken(string value)
             : base(value)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("Variables are not supported in current version.");
         }
     }
 }

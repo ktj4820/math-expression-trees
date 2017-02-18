@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Tokenizing\CharTokenizer.cs" />
     <Compile Include="Calculating\ConstantExpressionCalculator.cs" />
+    <Compile Include="Tokenizing\GroupAssemblingException.cs" />
     <Compile Include="Tokens\ITokenCollection.cs" />
     <Compile Include="Tokens\ITokenCollectionSplit.cs" />
     <Compile Include="Syntax\IWalkable.cs" />

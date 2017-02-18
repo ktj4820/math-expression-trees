@@ -23,7 +23,7 @@ namespace Nintek.Mathematics
 
             if (operationToken == null)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException($"Cannot calculate node which contains token: {node.Token}.");
             }
 
             Func<double, double, double> operation;
@@ -47,7 +47,7 @@ namespace Nintek.Mathematics
                     break;
 
                 default:
-                    throw new InvalidOperationException();
+                    throw new InvalidOperationException($"Cannot calculate operation: {operationToken.Value}.");
             }
 
             var leftValue = Calculate(node.Left);

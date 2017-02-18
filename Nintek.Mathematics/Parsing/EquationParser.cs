@@ -10,7 +10,7 @@ namespace Nintek.Mathematics.Parsers
     {
         public SyntaxTree Parse(ITokenCollection tokens)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("Equations are not supported in this version.");
         }
     }
 }
